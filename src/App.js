@@ -20,7 +20,7 @@ const FAQ = lazy(() => import('./components/faq'));
 const PatientDB = lazy(() => import('./components/patientdb'));
 const Resources = lazy(() => import('./components/resources'));
 const State = lazy(() => import('./components/state'));
-const Tracker = lazy(() => import('./components/tracker'));
+const Essentials = lazy(() => import('./components/essentials'));
 
 const schemaMarkup = {
   '@context': 'http://schema.org/',
@@ -68,6 +68,13 @@ function App() {
       view: FAQ,
       displayName: t('About'),
       animationDelayForNavbar: 0.6,
+      showInNavbar: true,
+    },
+    {
+      pageLink: '/essen',
+      view: Essentials,
+      displayName: 'Essen',
+      animationDelayForNavbar: 0.8,
       showInNavbar: true,
     },
     {

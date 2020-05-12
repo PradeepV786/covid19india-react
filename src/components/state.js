@@ -6,7 +6,6 @@ import MapExplorer from './mapexplorer';
 import Minigraph from './minigraph';
 import StateMeta from './statemeta';
 import TimeSeriesExplorer from './timeseriesexplorer';
-import TrackerTable from './trackertable';
 
 import {STATE_CODES, STATE_POPULATIONS} from '../constants';
 import {
@@ -18,9 +17,8 @@ import {
   parseDistrictZones,
 } from '../utils/commonfunctions';
 
-import Dropdown from '@primer/components/lib/Dropdown';
 import Breadcrumb from '@primer/components/lib/Breadcrumb';
-
+import Dropdown from '@primer/components/lib/Dropdown';
 import anime from 'animejs';
 import axios from 'axios';
 import {format, parse} from 'date-fns';
@@ -462,19 +460,6 @@ function State(props) {
                     }
                   </div>
                 </div>
-
-                {false && (
-                  <Link to="/essentials">
-                    <div
-                      className="to-essentials fadeInUp"
-                      style={{animationDelay: '0.9s'}}
-                    >
-                      <h2>Go to essentials</h2>
-                      <Icon.ArrowRightCircle />
-                    </div>
-                  </Link>
-                )}
-                <TrackerTable />
                 <TimeSeriesExplorer timeseries={timeseries} />
               </React.Fragment>
             )}

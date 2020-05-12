@@ -123,6 +123,11 @@ h6 {
   width: 100%;
 }
 
+.Almighty-Router {
+  display: flex;
+  flex-direction: column;
+}
+
 .arrow-up {
   border-bottom: 5px solid $gray-mid;
   border-left: 5px solid transparent;
@@ -795,6 +800,84 @@ h6 {
   }
 }
 
+.EssentialsNearby {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+
+  img {
+    align-self: center;
+  }
+
+  button {
+    height: 5rem;
+    background: $yellow-light;
+    color: $orange;
+    text-transform: unset;
+    width: 10rem;
+    margin: 0;
+    align-self: center;
+    font-weight: 600;
+
+    &:hover {
+      background: $yellow-hover;
+    }
+  }
+
+  .address {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    align-self: center;
+    color: $gray;
+
+    h3 {
+      margin-right: 1rem;
+    }
+
+    svg {
+      cursor: pointer;
+      margin-bottom: 2px;
+      stroke-width: 3px;
+      stroke: $gray-mid;
+    }
+
+    * {
+      align-self: center;
+    }
+  }
+}
+
+.Essentials {
+  width: 30rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.labels {
+  margin-bottom: 1rem;
+}
+
+.label-item {
+  background: $yellow-light !important;
+  border-radius: 5px !important;
+  color: $orange-mid !important;
+  cursor: pointer;
+  font-family: 'archia' !important;
+  margin-bottom: .25rem;
+  text-transform: capitalize;
+
+  &:hover {
+    background: $yellow-hover !important;
+  }
+
+  .counter {
+    background: $orange-light;
+    color: $orange;
+  }
+}
+
 .height-22 {
   height: 22px;
 }
@@ -1386,6 +1469,7 @@ h6 {
         height: 1rem;
         padding: .25rem;
         text-align: right;
+        text-transform: capitalize;
 
         & > * {
           align-self: center;
@@ -3589,92 +3673,6 @@ footer {
     z-index: unset;
   }
 }
-
-.Tracker-table {
-  margin-top: 3rem;
-  width: 30rem;
-
-  .close-button {
-    position: absolute;
-    right: 0;
-    stroke: $gray;
-    top: -2rem;
-
-    svg {
-      width: 16px;
-    }
-  }
-
-  .button {
-    align-self: center;
-    background: $gray-light;
-    border-radius: 5px;
-    flex-direction: row;
-    justify-content: center;
-    margin: 0;
-    transition: all .2s ease-in-out;
-    width: 100%;
-
-    &:hover {
-      background: $gray-hover;
-
-      svg {
-        color: $gray;
-      }
-    }
-
-    h3 {
-      color: $gray;
-      font-weight: 600;
-      text-transform: none;
-      width: 25rem;
-    }
-
-    svg {
-      color: $gray-mid;
-      transition: all .1s ease-in-out;
-    }
-
-    & > * {
-      align-self: center;
-    }
-  }
-
-  .location {
-    color: $gray;
-    font-family: 'archia';
-    margin-bottom: 1rem;
-  }
-
-  .results {
-    width: 100%;
-
-    .labels {
-      margin-bottom: 1rem;
-    }
-
-    .LabelItem {
-      background: $yellow-light;
-      border-radius: 5px;
-      color: $orange-mid !important;
-      cursor: pointer;
-      font-family: 'archia' !important;
-      margin-bottom: .25rem;
-      text-transform: capitalize;
-
-      .counter {
-        background: $orange-light;
-        color: $orange;
-      }
-    }
-
-    .essential-result {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-}
-
 
 .Patients {
   align-self: center;

@@ -6,17 +6,16 @@ import * as Icon from 'react-feather';
 
 const TrackerTable = (props) => {
   const [currentLocation, setCurrentLocation] = useState(null);
-  const [currAddr, setCurrAddr] = useState(null);
+  const [currentAddress, setCurrentAddress] = useState(null);
 
-  const getLocationHandler = (event) => {
-    event.preventDefault();
+  const getLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       setCurrentLocation([position.coords.latitude, position.coords.longitude]);
-      getCurrAddr(position.coords.latitude, position.coords.longitude);
+      getCurrentAddress(position.coords.latitude, position.coords.longitude);
     });
   };
 
-  const getCurrAddr = (lat, lng) => {
+  const getCurrentAddress = (lat, lng) => {
     try {
       axios
         .get(
@@ -27,39 +26,53 @@ const TrackerTable = (props) => {
             '&localityLanguage=en'
         )
         .then((response) => {
-          setCurrAddr(response.data.locality);
+          setCurrentAddress(response.data.locality);
         });
     } catch (err) {
       console.log(err);
-      setCurrAddr('Error fetching name of your location');
+      setCurrentAddress('Error fetching name of your location');
     }
   };
 
   return (
-    <div className="Tracker-table">
-      {currentLocation ? (
-        <div className="Search">
-          <div className="location">{currAddr}</div>
-          <span
-            className="close-button"
+    <div className="EssentialsNearby">
+      <img
+        src="/essentials_1.svg"
+        className="fadeInUp"
+        style={{animationDelay: '0.3s'}}
+      />
+      <img
+        src="/essentials_2.svg"
+        className="fadeInUp"
+        style={{position: 'absolute', animationDelay: '0.1s'}}
+      />
+
+      {!currentLocation && (
+        <button
+          className="button fadeInUp"
+          style={{animationDelay: '0.6s'}}
+          onClick={() => getLocation()}
+        >
+          View essentials nearby offering special assistance
+        </button>
+      )}
+
+      <div className="address fadeInUp" style={{animationDelay: '0.6s'}}>
+        <h3>{currentAddress}</h3>
+        {currentAddress && (
+          <Icon.XCircle
+            size={16}
             onClick={() => {
               setCurrentLocation(null);
+              setCurrentAddress(null);
             }}
-          >
-            <Icon.XCircle />
-          </span>
-          <MapChart userLocation={currentLocation} />
-        </div>
-      ) : (
-        <div
-          className="button fadeInUp"
-          style={{animationDelay: '0.9s'}}
-          onClick={(event) => getLocationHandler(event)}
-        >
-          <Icon.MapPin />
-          <h3>View nearby essentials offering special assistance</h3>
-        </div>
-      )}
+          />
+        )}
+      </div>
+
+      <div className="Search">
+        {currentAddress && <MapChart userLocation={currentLocation} />}
+      </div>
     </div>
   );
 };
